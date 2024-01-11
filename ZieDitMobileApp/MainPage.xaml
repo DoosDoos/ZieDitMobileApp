@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZieDitMobileApp.MainPage"
+             xmlns:viewmodel="clr-namespace:ZieDitMobileApp.ViewModels"
+             x:DataType="viewmodel:MainPageViewModel"
+             xmlns:model="clr-namespace:ZieDitMobileApp.Models"
+             Shell.NavBarIsVisible="false">
+    <ScrollView>
+        <StackLayout>
+            <Frame Style="{StaticResource MainLogoFrameStyle}">
+                <Image Style="{StaticResource MainLogoStyle}"/>
+            </Frame>
+
+            <CollectionView ItemsSource="{Binding Events}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Event">
+                        <Frame Style="{StaticResource EventFrameStyle}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="EventFrameTapped" NumberOfTapsRequired="1" />
+                            </Frame.GestureRecognizers>
+                            <HorizontalStackLayout>
+                                <Image Style="{StaticResource LogoStyle}"/>
+                                <VerticalStackLayout VerticalOptions="Center">
+                                    <Label Text="{Binding EventTitle}"/>
+                                    <Label Text="{Binding EventDescription}"/>
+                                    <Label Text="{Binding EventDate}"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

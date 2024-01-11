@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZieDitMobileApp.Views.EventPage"
+             xmlns:viewmodel="clr-namespace:ZieDitMobileApp.ViewModels"
+             x:DataType="viewmodel:EventPageViewModel"
+             xmlns:model="clr-namespace:ZieDitMobileApp.Models"
+             Title="EventPage"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout>
+
+        <Frame x:DataType="model:Event" Style="{StaticResource MainLogoFrameStyle}">
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="Center" >
+                <Image Style="{StaticResource LogoStyle}"/>
+                <Label Text="{Binding EventTitle}" FontSize="30" VerticalOptions="Center" FontAttributes="Bold"/>
+            </StackLayout>
+        </Frame>
+
+        <Grid Padding="10" VerticalOptions="Start">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+          
+            <CollectionView ItemsSource="{Binding Posters}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Poster">
+                        <Frame Style="{StaticResource PosterFrameStyle}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnFrameTapped" NumberOfTapsRequired="1" />
+                            </Frame.GestureRecognizers>
+                            <Image Source="{Binding PosterImagePath}"/>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </StackLayout>
+</ContentPage>

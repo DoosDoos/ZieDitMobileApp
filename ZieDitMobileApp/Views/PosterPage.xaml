@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZieDitMobileApp.Views.PosterPage"
+             Title="PosterPage"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout>
+        <Frame Style="{StaticResource MainLogoFrameStyle}">
+            <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" VerticalOptions="Center" >
+                <Image Style="{StaticResource LogoStyle}"/>
+                <Label Text="ZieDit Expo ..." FontSize="30" VerticalOptions="Center" FontAttributes="Bold"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame Style="{StaticResource IndividualPosterStyle}">
+            <Label Text="Hierin Poster" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Frame>
+
+        <Grid Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Text="Contactgegevens" Style="{StaticResource IndividualPosterButtonStyle}" Grid.Column="0"/>
+
+            <Button Text="Punten Geven" Style="{StaticResource IndividualPosterButtonStyle}" Grid.Column="1"/>
+
+        </Grid>
+
+    </StackLayout>
+</ContentPage>
