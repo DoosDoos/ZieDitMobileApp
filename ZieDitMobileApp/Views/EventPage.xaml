@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ZieDitMobileApp.Views.EventPage"
              xmlns:viewmodel="clr-namespace:ZieDitMobileApp.ViewModels"
-             x:DataType="viewmodel:EventPageViewModel"
+             x:DataType="viewmodel:EventViewModel"
              xmlns:model="clr-namespace:ZieDitMobileApp.Models"
-             Title="EventPage"
-             NavigationPage.HasNavigationBar="False">
+             Shell.NavBarIsVisible="false">
     <StackLayout>
 
         <Frame x:DataType="model:Event" Style="{StaticResource MainLogoFrameStyle}">
@@ -16,24 +15,14 @@
             </StackLayout>
         </Frame>
 
-        <Grid Padding="10" VerticalOptions="Start">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-          
-            <CollectionView ItemsSource="{Binding Posters}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Poster">
-                        <Frame Style="{StaticResource PosterFrameStyle}">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnFrameTapped" NumberOfTapsRequired="1" />
-                            </Frame.GestureRecognizers>
-                            <Image Source="{Binding PosterImagePath}"/>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
+        <!--<Entry x:Name="posterIdEntry" Placeholder="Voer hier posterId in." HorizontalTextAlignment="Center"/>
+        <Button x:Name="posterIdButton" Text="Click me!" Clicked="OnPosterIdButton_Clicked"/>-->
+        <Frame Style="{StaticResource PosterFrameStyle}">
+            <Image x:Name="posterImagePathImage" Aspect="AspectFit"/>
+        </Frame>
+
+        <Button x:Name="DisplayPosterButton" Text="Toon Posters" Clicked="DisplayPosterButtonClicked" />
+
+        <!--<Label x:Name="nfcDataLabel" Text="NFC data hier"/>-->
     </StackLayout>
 </ContentPage>

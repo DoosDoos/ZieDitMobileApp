@@ -1,4 +1,5 @@
-﻿using MvvmHelpers;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using MvvmHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,20 @@ using ZieDitMobileApp.Services;
 
 namespace ZieDitMobileApp.ViewModels
 {
-    internal class EventPageViewModel : CommunityToolkit.Mvvm.ComponentModel.ObservableObject
+    [QueryProperty(nameof(EventId), nameof(EventId))]
+    public partial class EventPageViewModel : CommunityToolkit.Mvvm.ComponentModel.ObservableObject
     {
+        int eventId;
+        public int EventId
+        {
+            get => eventId;
+            set
+            {
+                eventId = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ObservableRangeCollection<Poster> Posters { get; set; } = new();
         private readonly IPosterService _posterService;
 
@@ -22,7 +35,7 @@ namespace ZieDitMobileApp.ViewModels
 
         private async void GetPosterFromApi()
         {
-            var posters = await _posterService.GetPosters();
+            var posters = await _posterService.GetPosters(EventId);
 
             if (Posters.Count > 0)
                 Posters.Clear();

@@ -7,16 +7,10 @@ namespace ZieDitMobileApp
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage(MainPageViewModel mainPageViewModel)
+        public MainPage(MainViewModel viewModel)
         {
             InitializeComponent();
-            BindingContext = mainPageViewModel;
-        }
-
-        private void EventFrameTapped(object sender, TappedEventArgs e)
-        {
-            var selectedEvent = (Event)((Frame)sender).BindingContext;
-            App.Current.MainPage = new NavigationPage(new EventPage(selectedEvent));
-        }
+            BindingContext = viewModel;
+        }               
     }
 }

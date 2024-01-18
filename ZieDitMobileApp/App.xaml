@@ -25,7 +25,8 @@
         <Style x:Key="PosterFrameStyle" TargetType="Frame">
             <Setter Property="Margin" Value="10"/>
             <Setter Property="CornerRadius" Value="25"/>
-            <Setter Property="HeightRequest" Value="250"/>
+            <Setter Property="HeightRequest" Value="375"/>
+            <Setter Property="WidthRequest" Value="300"/>
             <Setter Property="BorderColor" Value="LightGray"/>
         </Style>
 

@@ -2,6 +2,7 @@
 using System.Net.Http;
 using ZieDitMobileApp.Services;
 using ZieDitMobileApp.ViewModels;
+using ZieDitMobileApp.Views;
 
 namespace ZieDitMobileApp
 {
@@ -18,8 +19,17 @@ namespace ZieDitMobileApp
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("Akira Expanded Demo.otf, Akira");
                 });
-            builder.Services.AddTransient<MainPageViewModel>();
-            builder.Services.AddTransient<MainPage>();
+
+            builder.Services.AddSingleton<ApiService>();
+
+            builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddSingleton<EventViewModel>();
+            builder.Services.AddTransient<PosterViewModel>();
+
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddTransient<EventPage>();
+            builder.Services.AddTransient<PosterPage>();
+
             builder.Services.AddTransient<HttpClient>(serviceProvider =>
             {
                 var handler = new HttpClientHandler
@@ -31,7 +41,6 @@ namespace ZieDitMobileApp
 
                 return new HttpClient(handler);
             });
-            builder.Services.AddTransient<IEventService, EventService>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

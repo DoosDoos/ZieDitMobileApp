@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ZieDitMobileApp.MainPage"
              xmlns:viewmodel="clr-namespace:ZieDitMobileApp.ViewModels"
-             x:DataType="viewmodel:MainPageViewModel"
+             x:DataType="viewmodel:MainViewModel"
              xmlns:model="clr-namespace:ZieDitMobileApp.Models"
              Shell.NavBarIsVisible="false">
     <ScrollView>
@@ -12,12 +12,12 @@
                 <Image Style="{StaticResource MainLogoStyle}"/>
             </Frame>
 
-            <CollectionView ItemsSource="{Binding Events}">
+            <CollectionView ItemsSource="{Binding Events}" SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Event">
                         <Frame Style="{StaticResource EventFrameStyle}">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="EventFrameTapped" NumberOfTapsRequired="1" />
+                                <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=GoToEventPageCommand}"/>
                             </Frame.GestureRecognizers>
                             <HorizontalStackLayout>
                                 <Image Style="{StaticResource LogoStyle}"/>

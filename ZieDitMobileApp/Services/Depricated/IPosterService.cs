@@ -9,6 +9,6 @@ namespace ZieDitMobileApp.Services
 {
     public interface IPosterService
     {
-        Task<List<Poster>> GetPosters();
+        Task<List<Poster>> GetPosters(int eventId);
     }
 }
